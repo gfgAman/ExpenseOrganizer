@@ -22,8 +22,12 @@ const Cards = ({ title }: cardProp) => {
   // Set initial wallet values
   useEffect(() => {
     if (wallet) {
-      setBalanceAmount(wallet.bank_balance ?? 0)
-      setBudgetCards(wallet.budget_cards ?? [])
+      const initialCards = wallet.budget_cards ?? []
+      const totalBudget = initialCards.reduce((sum, card) => sum + card.budget_price, 0)
+      const balance = (wallet.bank_balance ?? 0) - totalBudget
+
+      setBudgetCards(initialCards)
+      setBalanceAmount(balance)
     }
   }, [wallet])
 
@@ -56,10 +60,10 @@ const Cards = ({ title }: cardProp) => {
         <div className='grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-y-4'>
           {budgetCards.map(({ title, budget_price }, index) => (
             <Card
-              key={`${title}-${index}`}
+              key={`${title}- ${index}`}
               title={title}
               budget_price={budget_price}
-              setBalanceAmount={setBalanceAmount}
+
             />
           ))}
         </div>

@@ -1,20 +1,9 @@
-import React, { useEffect } from "react";
-
-
 interface CardProps {
-  title: string;
-  budget_price: number;
-  setBalanceAmount: React.Dispatch<React.SetStateAction<number>>;
+  title: string
+  budget_price: number
 }
 
-const Card = ({ title, budget_price, setBalanceAmount }: CardProps) => {
-
-  // useEffect(() => {
-    
-  //   setBalanceAmount((prev: number) => prev - budget_price);
-  // }, []);
-
-
+const Card = ({ title, budget_price }: CardProps) => {
   return (
     <div className=" dark:bg-gray-800 shadow-lg bg-white rounded-2xl p-6 transition-transform transform hover:-translate-y-2 hover:shadow-xl w-full sm:w-72 mx-auto group">
       <div className="flex items-center justify-between mb-4">
@@ -37,7 +26,7 @@ const Card = ({ title, budget_price, setBalanceAmount }: CardProps) => {
         <span className="text-xs text-gray-400 dark:text-gray-300">Updated just now</span>
       </div>
     </div>
-  );
-};
+  )
+}
 
 export default Card;
