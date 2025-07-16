@@ -16,9 +16,9 @@ const Card = ({ title, budget_price, setBalanceAmount }: CardProps) => {
 
 
   return (
-    <div className=" dark:bg-gray-800 shadow-lg rounded-2xl p-6 transition-transform transform hover:-translate-y-2 hover:shadow-xl w-full sm:w-72 mx-auto group">
+    <div className=" dark:bg-gray-800 shadow-lg bg-white rounded-2xl p-6 transition-transform transform hover:-translate-y-2 hover:shadow-xl w-full sm:w-72 mx-auto group">
       <div className="flex items-center justify-between mb-4">
-        <h2 className="text-xl font-bold text-white dark:text-white group-hover:text-blue-600 transition-colors duration-300">
+        <h2 className="text-xl font-bold dark:text-white group-hover:text-blue-600 transition-colors duration-300">
           {title}
         </h2>
         <span className="text-sm font-medium text-gray-500 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 px-2 py-1 rounded">

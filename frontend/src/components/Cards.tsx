@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { budgetData } from '../assets/cardsData'
 import Card from './Card'
+import { ToastContainer, toast } from 'react-toastify';
 
 
 interface cardProp{
@@ -28,7 +29,7 @@ const Cards = ({title}:cardProp) => {
       <div className='py-7'>
         <h1 className='text-white text-center'>Expense Cards</h1>
 
-        <div className='grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1'>
+        <div className='grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-y-4'>
           {budgetCards.map(({ title, budget_price }) => (
             <Card
               key={title}
@@ -40,6 +41,7 @@ const Cards = ({title}:cardProp) => {
           ))}
         </div>
       </div>
+      <ToastContainer/>
     </div>
   )
 }

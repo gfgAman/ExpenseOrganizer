@@ -14,5 +14,11 @@ export const budgetData = [
     {
         "title": "Savings",
         "budget_price": 2500
-    }
+    },
+    {
+        "title": "Fun",
+        "budget_price": 2500
+    },
+    
+    
 ]

@@ -1,6 +1,7 @@
 import { ChevronDown } from 'lucide-react';
 import { useState } from 'react';
-import { AddNewBankModal} from '../modals/AddNewBankModal';
+import { AddNewBankModal } from '../modals/AddNewBankModal';
+import { banksListing } from '../assets/bankAccounts';
 
 interface bankDropdownProp {
     bankDropdownOpen: boolean,
@@ -9,8 +10,8 @@ interface bankDropdownProp {
 
 const BankDropdown = ({ bankDropdownOpen, setBankDropdownOpen }: bankDropdownProp) => {
 
-    const banksListing =    ["State Bank of India", "ICICI", "Axis Bank", "Bank of Baroda"];
-    // const banksListing: [] = []
+
+    
     const [openCreateBankModal, setOpenCreateBankModal] = useState<boolean>(false)
 
     const bankAccountDropdown = () => {

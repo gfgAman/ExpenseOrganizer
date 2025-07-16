@@ -15,6 +15,7 @@ export const AddNewBankModal = ({ isOpen, onClose }: ExpenseCardProp) => {
     branchName: '',
     accountNumber: '',
     ifscCode: '',
+    bankBal: ''
   });
 
   if (!isOpen) return null;
@@ -37,6 +38,7 @@ export const AddNewBankModal = ({ isOpen, onClose }: ExpenseCardProp) => {
       formData.branchName = '';
       formData.accountNumber = '';
       formData.ifscCode = '';
+      formData.bankBal = ''
     } else {
       formData.upiId = '';
     }
@@ -60,8 +62,8 @@ export const AddNewBankModal = ({ isOpen, onClose }: ExpenseCardProp) => {
         </div>
 
         {/* Content */}
-        <div className="overflow-y-auto max-h-[calc(90vh-140px)]">
-          <form onSubmit={handleSubmit} className="p-6 space-y-8">
+        <div className="overflow-y-auto">
+          <form onSubmit={handleSubmit} className="p-3 space-y-8">
             <div className="space-y-4">
               <h4 className="text-lg font-semibold text-gray-900">Payment Method</h4>
               <div className="flex gap-4">
@@ -84,17 +86,30 @@ export const AddNewBankModal = ({ isOpen, onClose }: ExpenseCardProp) => {
               </div>
 
               {useUPI ? (
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">UPI ID</label>
-                  <input
-                    type="text"
-                    value={formData.upiId}
-                    onChange={(e) => handleInputChange('upiId', e.target.value)}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    placeholder="example@upi"
-                    required
-                  />
-                </div>
+                <>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">UPI ID</label>
+                    <input
+                      type="text"
+                      value={formData.upiId}
+                      onChange={(e) => handleInputChange('upiId', e.target.value)}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      placeholder="example@upi"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Add Bank Balance</label>
+                    <input
+                      type="text"
+                      value={formData.bankBal}
+                      onChange={(e) => handleInputChange('bankBal', e.target.value)}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      placeholder="10000"
+                      required
+                    />
+                  </div>
+                </>
               ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
@@ -133,6 +148,16 @@ export const AddNewBankModal = ({ isOpen, onClose }: ExpenseCardProp) => {
                       type="text"
                       value={formData.ifscCode}
                       onChange={(e) => handleInputChange('ifscCode', e.target.value)}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Enter Bank Balance</label>
+                    <input
+                      type="text"
+                      value={formData.bankBal}
+                      onChange={(e) => handleInputChange('bankBal', e.target.value)}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
                       required
                     />
