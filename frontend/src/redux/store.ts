@@ -4,7 +4,7 @@ import cardSlice from './cardSlice'
 
 export const store = configureStore({
   reducer: {
-    counter: cardSlice,
+    cardSlice: cardSlice,
   },
 })
 

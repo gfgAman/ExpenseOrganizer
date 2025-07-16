@@ -6,6 +6,7 @@ import { useState } from 'react'
 import BankDropdown from './BankDropdown'
 import ProfileDropdown from './ProfileDropdown'
 
+
 interface headerProp {
     setTitle: React.Dispatch<React.SetStateAction<string>>
 }

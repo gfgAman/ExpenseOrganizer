@@ -9,10 +9,10 @@ interface CardProps {
 
 const Card = ({ title, budget_price, setBalanceAmount }: CardProps) => {
 
-  useEffect(() => {
+  // useEffect(() => {
     
-    setBalanceAmount((prev: number) => prev - budget_price);
-  }, []);
+  //   setBalanceAmount((prev: number) => prev - budget_price);
+  // }, []);
 
 
   return (

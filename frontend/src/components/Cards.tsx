@@ -1,47 +1,70 @@
 import { useEffect, useState } from 'react'
-import { budgetData } from '../assets/cardsData'
 import Card from './Card'
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify'
+import { useSelector } from 'react-redux'
+import type { RootState } from '../redux/store'
 
-
-interface cardProp{
-    title:string
+interface cardProp {
+  title: string
 }
-const Cards = ({title}:cardProp) => {
-  const [balanceAmount, setBalanceAmount] = useState(10000)
-  const [budgetCards, setBudgetCards] = useState(budgetData)
 
+interface BudgetCard {
+  title: string
+  budget_price: number
+}
 
-  
+const Cards = ({ title }: cardProp) => {
+  const { wallet } = useSelector((state: RootState) => state.cardSlice)
+
+  const [balanceAmount, setBalanceAmount] = useState<number>(0)
+  const [budgetCards, setBudgetCards] = useState<BudgetCard[]>([])
+
+  // Set initial wallet values
   useEffect(() => {
-    if (title.trim() === '') {
-      setBudgetCards(budgetData) // Reset to original list if title is empty
-    } else {
-      const filteredCards = budgetData.filter(card => card.title.toLowerCase().includes(title.toLowerCase()))
-      setBudgetCards(filteredCards)
+    if (wallet) {
+      setBalanceAmount(wallet.bank_balance ?? 0)
+      setBudgetCards(wallet.budget_cards ?? [])
     }
-  }, [title])
+  }, [wallet])
+
+  // Filter based on search
+  useEffect(() => {
+    if (!wallet?.budget_cards) return
+
+    if (title.trim() === '') {
+      setBudgetCards(wallet.budget_cards)
+    } else {
+      const filtered = wallet.budget_cards.filter(card =>
+        card.title.toLowerCase().includes(title.toLowerCase())
+      )
+      setBudgetCards(filtered)
+    }
+  }, [title, wallet?.budget_cards])
 
   return (
     <div className='my-7'>
-      <h1 className='text-white text-center font-bold'>My Main Balance: Rs. {balanceAmount}</h1>
+      <h1 className='text-yellow-500 text-center font-bold'>
+        {wallet?.bank_name}
+      </h1>
+      <h1 className='text-white text-center font-bold'>
+        My Main Balance: Rs. {balanceAmount}
+      </h1>
 
       <div className='py-7'>
-        <h1 className='text-white text-center'>Expense Cards</h1>
+        <h1 className='text-white text-center mb-3'>Expense Cards</h1>
 
         <div className='grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-y-4'>
-          {budgetCards.map(({ title, budget_price }) => (
+          {budgetCards.map(({ title, budget_price }, index) => (
             <Card
-              key={title}
+              key={`${title}-${index}`}
               title={title}
               budget_price={budget_price}
               setBalanceAmount={setBalanceAmount}
-
             />
           ))}
         </div>
       </div>
-      <ToastContainer/>
+      <ToastContainer />
     </div>
   )
 }
