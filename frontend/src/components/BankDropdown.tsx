@@ -24,7 +24,7 @@ const BankDropdown = ({ bankDropdownOpen, setBankDropdownOpen }: bankDropdownPro
 
     const dispatch = useDispatch()
     return (
-        <div className="hidden md:block relative">
+        <div className=" block relative">
             <button
                 onClick={bankAccountDropdown}
                 className="flex items-center text-white font-bold text-sm outline outline-2 outline-white space-x-2 p-2 rounded-lg transition-colors duration-200 w-50 flex justify-between"
@@ -72,7 +72,6 @@ const BankDropdown = ({ bankDropdownOpen, setBankDropdownOpen }: bankDropdownPro
 
                     isOpen={openCreateBankModal}
                     onClose={() => setOpenCreateBankModal(false)}
-                //   onSave={handleSaveProfile}
                 />
             }
 

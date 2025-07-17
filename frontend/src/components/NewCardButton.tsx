@@ -8,7 +8,7 @@ const NewCardButton = () => {
     
     return (
         <>
-            <div className=' font-bold text-white outline outline-white text-center p-2 cursor-pointer' onClick={() => setShowModal(true)}>
+            <div className=' font-bold text-white outline outline-white text-center p-2 cursor-pointer w-1/5 md:w-1/8' onClick={() => setShowModal(true)}>
                 + NEW
             </div>
             {
@@ -16,7 +16,6 @@ const NewCardButton = () => {
 
                     isOpen={showModal}
                     onClose={() => setShowModal(false)}
-                //   onSave={handleSaveProfile}
                 />) :
                     <CreateNewExpenseCardModal isOpen={showModal} onClose={() => setShowModal(false)} />
             }
