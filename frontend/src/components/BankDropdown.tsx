@@ -57,6 +57,7 @@ const BankDropdown = ({ bankDropdownOpen, setBankDropdownOpen }: bankDropdownPro
                                 setBankDropdownOpen(false)
                                 setBankName(bank.bank_name)
                                 dispatch(setWallet(bank))
+                                
                             }}
                             className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 cursor-pointer transition-colors duration-200"
                         >
