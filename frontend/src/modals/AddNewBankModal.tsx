@@ -49,10 +49,10 @@ export const AddNewBankModal = ({ isOpen, onClose }: ExpenseCardProp) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50">
-      <div className="w-full max-w-4xl max-h-[90vh] bg-white rounded-2xl shadow-2xl overflow-hidden">
+      <div className="w-full max-w-4xl max-h-[90vh] bg-white rounded-2xl shadow-2xl overflow-y-auto">
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-gray-200 bg-gradient-to-r from-blue-50 to-purple-50">
-          <h3 className="text-2xl font-bold text-gray-900">Add Your Bank Details</h3>
+          <h3 className="text-l font-bold text-gray-900">Add Your Bank Details</h3>
           <button
             onClick={onClose}
             className="p-2 text-gray-400 hover:text-gray-600 hover:bg-white hover:bg-opacity-50 rounded-full transition-all duration-200"
@@ -166,13 +166,11 @@ export const AddNewBankModal = ({ isOpen, onClose }: ExpenseCardProp) => {
               )}
             </div>
 
-            {/* Remaining sections: Professional Info, Bio, Social Links, Tech Stack (unchanged) */}
-            {/* ... include previous JSX here if needed ... */}
           </form>
         </div>
 
         {/* Footer */}
-        <div className="flex justify-end space-x-4 p-6 border-t border-gray-200 bg-gray-50">
+        <div className="flex justify-end space-x-4 p-2 border-t border-gray-200 bg-gray-50">
           <button
             type="button"
             onClick={onClose}
@@ -182,7 +180,7 @@ export const AddNewBankModal = ({ isOpen, onClose }: ExpenseCardProp) => {
           </button>
           <button
             onClick={handleSubmit}
-            className="px-6 py-3 bg-blue-500 text-white hover:bg-blue-600 rounded-lg transition-all duration-200 flex items-center font-medium shadow-lg hover:shadow-xl"
+            className="p-2 bg-blue-500 text-white hover:bg-blue-600 rounded-lg transition-all duration-200 flex items-center font-medium shadow-lg hover:shadow-xl"
           >
             <Save size={16} className="mr-2" />
             Save Changes

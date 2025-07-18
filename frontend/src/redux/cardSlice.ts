@@ -1,17 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
+import type { Wallet } from './types'
 
 export interface CounterState {
-    wallet: object,
+    wallet: Wallet|null,
     bankName: string
 }
 
 const initialState: CounterState = {
-    wallet: {
-        bank_name: '',
-        budget_cards: [],
-        bank_balance: 0
-    },
+    wallet: null,
     bankName: ''
 }
 
@@ -19,7 +16,7 @@ export const cardSlice = createSlice({
     name: 'card',
     initialState,
     reducers: {
-        setWallet: (state, action: PayloadAction<object>) => {
+        setWallet: (state, action: PayloadAction<Wallet>) => {
             state.wallet = action.payload
         },
         setBankName: (state, action: PayloadAction<string>) => {

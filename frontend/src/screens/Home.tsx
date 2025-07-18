@@ -26,16 +26,11 @@ const Home = () => {
 
   const [balanceAmount, setBalanceAmount] = useState<number>(0)
   const [budgetCards, setBudgetCards] = useState<BudgetCard[]>([])
-
+  const [isScannerOpen, setIsScannerOpen] = useState(false);
   const { wallet } = useSelector((state: RootState) => state.cardSlice)
 
-  const paymentModes = [
-    { title: 'Scan QR', component: <QrScanner onScan={(data: any) => alert('Scanned: ' + data)} /> },
-    { title: 'Pay to Contacts', component: <PayToContacts /> },
-    { title: 'Pay via UPI ID', component: <UpiTransfer /> },
-    { title: 'Bank Transfer', component: <BankTransfer /> },
-  ]
-  // Set initial wallet values
+  const paymentModes = ['Scan QR', 'Pay to Contacts', 'Pay via UPI ID', 'Bank Transfer']
+
   useEffect(() => {
     if (wallet) {
       const initialCards = wallet?.budget_cards ?? []
@@ -86,18 +81,31 @@ const Home = () => {
                 {paymentModes.map((mode, index) => (
                   <div
                     key={index}
-                    onClick={() => setSelectedMode(mode.title)}
+                    onClick={() => {
+                      setSelectedMode(mode);
+                      if (mode === 'Scan QR') {
+                        setIsScannerOpen(true);
+                      }
+                    }}
                     className="cursor-pointer p-4 rounded-lg shadow-md text-center font-semibold transition-all
-                      bg-white hover:text-blue-700"
+      bg-white hover:text-blue-700"
                   >
-                    {mode.title}
+                    {mode}
                   </div>
                 ))}
+
               </div>
 
               {/* Selected Mode Component */}
-              <div className={`bg-white text-black ${selectedMode ? 'p-4' : ''} rounded-lg`}>
-                {paymentModes.find((m) => m.title === selectedMode)?.component}
+              <div>
+                {
+                  selectedMode === 'Scan QR' ? <QrScanner
+                    isScannerOpen={isScannerOpen}
+                    setIsScannerOpen={setIsScannerOpen}
+                  /> : selectedMode === 'Pay to Contacts' ? <PayToContacts />
+                    : selectedMode === 'Pay via UPI ID' ? <UpiTransfer />
+                      : selectedMode === 'Bank Transfer' ? <BankTransfer /> : null
+                }
               </div>
             </div>
             <div className="w-full md:w-1/2">
@@ -106,6 +114,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+
     </div>
   )
 }
