@@ -1,4 +1,4 @@
-import {X, Search} from 'lucide-react'
+import { X, Search } from 'lucide-react'
 import { useState } from 'react'
 import NewCardButton from '../components/Buttons/NewCardButton'
 import BankDropdown from '../components/Dropdowns/BankDropdown'
@@ -49,7 +49,10 @@ const Header = ({ setTitle }: headerProp) => {
                                     onChange={(e) => setTitle(e.target.value)}
                                 />
                                 <button
-                                    onClick={() => setShowMobileSearch(false)}
+                                    onClick={() => {
+                                        setShowMobileSearch(false)
+                                        setTitle('')
+                                    }}
                                     className="absolute right-5 text-gray-400"
                                 >
                                     <X className="h-5 w-5" />
