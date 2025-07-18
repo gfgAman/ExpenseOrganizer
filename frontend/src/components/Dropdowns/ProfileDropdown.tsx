@@ -11,7 +11,7 @@ const ProfileDropdown = ({ setProfileDropdownOpen, profileDropdownOpen }: profil
         <div className="relative">
             <button
                 onClick={() => setProfileDropdownOpen(!profileDropdownOpen)}
-                className="flex items-center space-x-2 p-2 rounded-lg transition-colors duration-200"
+                className="flex items-center space-x-2 rounded-lg transition-colors duration-200"
             >
                 <img
                     src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=400"

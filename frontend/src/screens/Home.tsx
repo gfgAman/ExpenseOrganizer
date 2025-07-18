@@ -2,8 +2,11 @@ import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import type { RootState } from '../redux/store'
 
-import Header from '../components/Header'
-import Cards from '../components/Cards'
+//Layouts
+import Header from '../Layouts/Header'
+
+//BugdetCards
+import Cards from '../components/BudgetCards/Cards'
 
 //Payment Modes
 import QrScanner from '../components/paymentModes.tsx/QrScanner'
@@ -20,22 +23,22 @@ const Home = () => {
   const [title, setTitle] = useState('')
   const [selectedMode, setSelectedMode] = useState<string | null>(null)
 
-  
+
   const [balanceAmount, setBalanceAmount] = useState<number>(0)
   const [budgetCards, setBudgetCards] = useState<BudgetCard[]>([])
-  
+
   const { wallet } = useSelector((state: RootState) => state.cardSlice)
-  
+
   const paymentModes = [
-  { title: 'Scan QR', component: <QrScanner onScan={(data: any) => alert('Scanned: ' + data)} /> },
-  { title: 'Pay to Contacts', component: <PayToContacts /> },
+    { title: 'Scan QR', component: <QrScanner onScan={(data: any) => alert('Scanned: ' + data)} /> },
+    { title: 'Pay to Contacts', component: <PayToContacts /> },
     { title: 'Pay via UPI ID', component: <UpiTransfer /> },
     { title: 'Bank Transfer', component: <BankTransfer /> },
   ]
   // Set initial wallet values
   useEffect(() => {
     if (wallet) {
-      const initialCards = wallet.budget_cards ?? []
+      const initialCards = wallet?.budget_cards ?? []
       const totalBudget = initialCards.reduce((sum, card) => sum + card.budget_price, 0)
       const balance = (wallet.bank_balance ?? 0) - totalBudget
 
@@ -58,10 +61,10 @@ const Home = () => {
     }
   }, [title, wallet?.budget_cards])
 
-  
+
 
   return (
-    <div className="bg-gradient-to-t from-fuchsia-500 to-black min-h-screen pt-4 px-4">
+    <div className="bg-gradient-to-t from-fuchsia-500 to-black min-h-screen">
       <Header setTitle={setTitle} />
 
       <div>
@@ -74,8 +77,8 @@ const Home = () => {
 
         <div className="p-4 max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row md:gap-x-36">
-      
-            <div className="w-full md:w-1/3">
+
+            <div className="w-full md:w-1/3 mb-3 md:mb-auto">
               <h1 className="text-xl font-semibold text-white text-center mb-6 border rounded-lg py-4">Choose Payment Mode</h1>
 
               {/* Payment Mode Buttons */}
@@ -98,7 +101,7 @@ const Home = () => {
               </div>
             </div>
             <div className="w-full md:w-1/2">
-              <Cards budgetCards={budgetCards} title = {wallet?.bank_name}/>
+              <Cards budgetCards={budgetCards} title={wallet?.bank_name} />
             </div>
           </div>
         </div>

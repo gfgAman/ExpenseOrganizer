@@ -1,10 +1,8 @@
-import {
-    Menu, X, Search, User, Settings, LogOut
-} from 'lucide-react'
-import NewCardButton from './NewCardButton'
+import {X, Search} from 'lucide-react'
 import { useState } from 'react'
-import BankDropdown from './BankDropdown'
-import ProfileDropdown from './ProfileDropdown'
+import NewCardButton from '../components/Buttons/NewCardButton'
+import BankDropdown from '../components/Dropdowns/BankDropdown'
+import ProfileDropdown from '../components/Dropdowns/ProfileDropdown'
 
 interface headerProp {
     setTitle: React.Dispatch<React.SetStateAction<string>>
@@ -18,13 +16,13 @@ const Header = ({ setTitle }: headerProp) => {
 
     return (
         <header className="shadow-lg sticky top-0 z-50 bg-black">
-            <nav className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <nav className="mx-auto max-w-7xl p-1 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-16">
                     {/* Left Section */}
                     {!showMobileSearch && (<NewCardButton />)}
 
                     {/* Center Section */}
-                    <div className="flex justify-center w-3/5">
+                    <div className="flex justify-center">
                         {/* Desktop Search Box */}
                         <div className="hidden md:flex w-full max-w-md">
                             <div className="relative w-full">
@@ -62,7 +60,7 @@ const Header = ({ setTitle }: headerProp) => {
                     </div>
 
                     {/* Right Section */}
-                    <div className="flex items-center space-x-2 w-full md:w-auto">
+                    <div className="flex items-center space-x-2 md:w-auto">
                         {!showMobileSearch && (
                             <>
                                 {/* Mobile Search Toggle Button */}

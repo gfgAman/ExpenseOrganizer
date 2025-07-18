@@ -1,9 +1,9 @@
 import { ChevronDown } from 'lucide-react';
 import { useState } from 'react';
-import { AddNewBankModal } from '../modals/AddNewBankModal';
-import { banksListing } from '../assets/bankAccounts';
+import { AddNewBankModal } from '../../modals/AddNewBankModal';
+import { banksListing } from '../../assets/bankAccounts';
 import { useDispatch } from 'react-redux';
-import { setWallet } from '../redux/cardSlice';
+import { setWallet } from '../../redux/cardSlice';
 
 interface bankDropdownProp {
     bankDropdownOpen: boolean,
@@ -27,11 +27,11 @@ const BankDropdown = ({ bankDropdownOpen, setBankDropdownOpen }: bankDropdownPro
         <div className=" block relative">
             <button
                 onClick={bankAccountDropdown}
-                className="flex items-center text-white font-bold text-sm outline outline-2 outline-white space-x-2 p-2 rounded-lg transition-colors duration-200 w-50 flex justify-between"
+                className="flex items-center text-white font-bold text-sm outline outline-2 outline-white space-x-2 p-2 rounded-lg transition-colors duration-200 md:w-50 flex justify-between"
             >
                 {banksListing.length > 0 ? (
                     <>
-                        <span>{bankName ? bankName : 'SELECT YOUR BANK'}</span>
+                        {bankName ? bankName : 'SELECT YOUR BANK'}
                         <ChevronDown
                             className={`h-4 w-4 text-gray-500 transition-transform duration-200 ${bankDropdownOpen ? 'rotate-180' : ''
                                 }`}
