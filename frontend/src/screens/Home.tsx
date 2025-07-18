@@ -73,10 +73,10 @@ const Home = () => {
         </h2>
 
         <div className="p-4 max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row md:gap-x-36 md:items-center">
+          <div className="flex flex-col md:flex-row md:gap-x-36">
       
             <div className="w-full md:w-1/3">
-              <h1 className="text-2xl text-white font-bold text-center mb-6 border rounded-lg py-4">Choose Payment Mode</h1>
+              <h1 className="text-xl font-semibold text-white text-center mb-6 border rounded-lg py-4">Choose Payment Mode</h1>
 
               {/* Payment Mode Buttons */}
               <div className="grid grid-cols-2 gap-4 mb-6">

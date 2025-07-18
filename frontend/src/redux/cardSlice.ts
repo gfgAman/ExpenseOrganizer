@@ -7,7 +7,11 @@ export interface CounterState {
 }
 
 const initialState: CounterState = {
-    wallet: {},
+    wallet: {
+        bank_name: '',
+        budget_cards: [],
+        bank_balance: 0
+    },
     bankName: ''
 }
 

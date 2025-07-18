@@ -12,10 +12,9 @@ interface CardsProps {
 }
 
 const Cards = ({ budgetCards, title }: CardsProps) => {
-  console.log(title,'title');
   return (
-    <div className="my-7">
-      <div className="py-7">
+    <div>
+      <div>
         <h1 className="text-white text-center mb-3 text-xl font-semibold border rounded-lg py-4 mb-6">Expense Cards</h1>
 
         {
